@@ -1,6 +1,13 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
+from dataclasses import dataclass
 from collections import Counter
+
+
+@dataclass
+class SpecialOffer:
+    number: int
+    price: int
 
 
 def checkout(skus):
@@ -14,20 +21,24 @@ def checkout(skus):
         'D': 15,
     }
 
+    special_offers = {
+        'A': SpecialOffer(number=3, price=130),
+        'B': SpecialOffer(number=2, price=45),
+    }
+
     skus = skus.split(' ')
 
     frequencies = Counter(skus)
 
     price = 0
     for sku, number in frequencies.items():
-        if sku == 'A':
-            special_price = number // 3 * 130
-            price += special_price + (number % 3) * prices[sku]
-        elif sku == 'B':
-            special_price = number // 2 * 45
-            price += special_price + (number % 2) * prices[sku]
+        if sku in special_offers:
+            special_offer = special_offers[sku]
+            price += number // special_offer.number * special_offer.price
+            price += number % special_offer.number * prices[sku]
         else:
             price += number * prices[sku]
 
     return price
+
 
