@@ -95,9 +95,11 @@ def checkout(skus):
     current_frequencies = frequencies
     for calculator in calculators:
         current_price, current_frequencies = calculator(current_frequencies)
+        print(current_frequencies)
         price += current_price
 
     return price
+
 
 
 
