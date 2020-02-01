@@ -67,6 +67,14 @@ class TestSum:
         assert checkout_solution.checkout('HHHHHHHHH') == 85
         assert checkout_solution.checkout('HHHHHHHHHH') == 80
 
+    def test_checkout_special_offer_K(self):
+        assert checkout_solution.checkout('KK') == 150
+        assert checkout_solution.checkout('KKK') == 230
+        assert checkout_solution.checkout('KKKK') == 300
+
+    def test_checkout_special_offer_N(self):
+        assert checkout_solution.checkout('NNNM') == 120
+
     def test_checkout_multiple_items_with_offers(self):
         assert checkout_solution.checkout('AAABB') == 175
         assert checkout_solution.checkout('AAAABBB') == 255
@@ -82,4 +90,5 @@ class TestSum:
     def test_checkout_illegal_if_input_contains_non_existing_item(self):
         assert checkout_solution.checkout('ABa') == -1
         assert checkout_solution.checkout('Hello, World!') == -1
+
 

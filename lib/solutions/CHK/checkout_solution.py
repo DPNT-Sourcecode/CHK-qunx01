@@ -101,7 +101,8 @@ def checkout(skus):
         'H': [
             DiscountOffer(number=10, price=80),
             DiscountOffer(number=5, price=45),
-        ]
+        ],
+        'K': [DiscountOffer(number=2, price=150)]
     }
 
     multibuy_offers = {
@@ -126,4 +127,5 @@ def checkout(skus):
         price += current_price
 
     return price
+
 
