@@ -22,6 +22,7 @@ def checkout(skus):
         'B': 30,
         'C': 20,
         'D': 15,
+        'E': 40,
     }
 
     special_offers = {
@@ -43,3 +44,4 @@ def checkout(skus):
             price += number * prices[sku]
 
     return price
+
