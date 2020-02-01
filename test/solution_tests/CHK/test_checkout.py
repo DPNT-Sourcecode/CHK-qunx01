@@ -21,6 +21,7 @@ class TestSum:
     def test_checkout_special_offer_A(self):
         assert checkout_solution.checkout('AAA') == 130
         assert checkout_solution.checkout('AAAA') == 180
+        assert checkout_solution.checkout('AAAAA') == 200
 
     def test_checkout_special_offer_B(self):
         assert checkout_solution.checkout('BB') == 45
@@ -45,6 +46,7 @@ class TestSum:
         assert checkout_solution.checkout('BEE') == 80
         assert checkout_solution.checkout('EEBEE') == 160
         assert checkout_solution.checkout('EEBEBE') == 160
+
 
 
 

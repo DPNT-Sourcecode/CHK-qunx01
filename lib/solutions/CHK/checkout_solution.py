@@ -30,19 +30,16 @@ def multibuy_offer_price_calculator(frequencies, multibuy_offers):
 
 def discount_offer_price_calculator(frequencies, discount_offers):
     price = 0
-    frequencies_copy = Counter()
+    frequencies_copy = deepcopy(frequencies)
 
-    for sku, number in frequencies.items():
-        if sku in discount_offers:
-            discount_offer = discount_offers[sku]
-            n_offers = number // discount_offer.number
-            leftovers = number % discount_offer.number
+    for sku, offers_list in discount_offers.items():
+        for discount_offer in offers_list:
+            n_items = frequencies_copy[sku]
+            n_offers = n_items // discount_offer.number
+            leftovers = n_items % discount_offer.number
 
             price += n_offers * discount_offer.price
             frequencies_copy[sku] = leftovers
-
-        else:
-            frequencies_copy[sku] = number
 
     return price, frequencies_copy
 
@@ -70,8 +67,11 @@ def checkout(skus):
     }
 
     discount_offers = {
-        'A': DiscountOffer(number=3, price=130),
-        'B': DiscountOffer(number=2, price=45),
+        'A': [
+            DiscountOffer(number=5, price=200),
+            DiscountOffer(number=3, price=130)
+        ],
+        'B': [DiscountOffer(number=2, price=45)],
     }
 
     multibuy_offers = {
@@ -96,6 +96,7 @@ def checkout(skus):
         price += current_price
 
     return price
+
 
 
 
