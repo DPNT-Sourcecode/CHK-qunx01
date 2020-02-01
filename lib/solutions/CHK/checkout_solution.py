@@ -85,17 +85,19 @@ def checkout(skus):
     if any([sku not in prices.keys() for sku in frequencies.keys()]):
         return -1
 
+    calculators = [
+        lambda freqs: multibuy_offer_price_calculator(freqs, multibuy_offers),
+        lambda freqs: discount_offer_price_calculator(freqs, discount_offers),
+        lambda freqs: default_price_calculator(freqs, prices),
+    ]
+
     price = 0
-
-    current_price, frequencies = multibuy_offer_price_calculator(frequencies, multibuy_offers)
-    price += current_price
-
-    current_price, frequencies = discount_offer_price_calculator(frequencies, discount_offers)
-    price += current_price
-
-    current_price, frequencies = default_price_calculator(frequencies, prices)
-    price += current_price
+    current_frequencies = frequencies
+    for calculator in calculators:
+        current_price, current_frequencies = calculator(current_frequencies)
+        price += current_price
 
     return price
+
 
 

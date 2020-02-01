@@ -30,6 +30,7 @@ class TestSum:
         assert checkout_solution.checkout('AAABB') == 175
         assert checkout_solution.checkout('AAAABBB') == 255
         assert checkout_solution.checkout('ABCDABCADA') == 295
+        assert checkout_solution.checkout('AAAABBBEE') == 320
 
     def test_checkout_illegal_if_input_is_not_string(self):
         assert checkout_solution.checkout(1) == -1
@@ -44,3 +45,4 @@ class TestSum:
         assert checkout_solution.checkout('BEE') == 80
         assert checkout_solution.checkout('EEBEE') == 160
         assert checkout_solution.checkout('EEBEBE') == 160
+
