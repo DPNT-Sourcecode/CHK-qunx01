@@ -11,6 +11,7 @@ class TestSum:
         assert checkout_solution.checkout('B') == 30
         assert checkout_solution.checkout('C') == 20
         assert checkout_solution.checkout('D') == 15
+        assert checkout_solution.checkout('E') == 40
 
     def test_checkout_with_multiple_different_items(self):
         assert checkout_solution.checkout('ABC') == 100
@@ -36,4 +37,5 @@ class TestSum:
     def test_checkout_illegal_if_input_contains_non_existing_item(self):
         assert checkout_solution.checkout('ABF') == -1
         assert checkout_solution.checkout('Hello, World!') == -1
+
 
