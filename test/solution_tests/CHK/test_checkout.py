@@ -17,7 +17,7 @@ class TestSum:
         assert checkout_solution.checkout('H') == 10
         assert checkout_solution.checkout('I') == 35
         assert checkout_solution.checkout('J') == 60
-        assert checkout_solution.checkout('K') == 80
+        assert checkout_solution.checkout('K') == 70
         assert checkout_solution.checkout('L') == 90
         assert checkout_solution.checkout('M') == 15
         assert checkout_solution.checkout('N') == 40
@@ -25,14 +25,14 @@ class TestSum:
         assert checkout_solution.checkout('P') == 50
         assert checkout_solution.checkout('Q') == 30
         assert checkout_solution.checkout('R') == 50
-        assert checkout_solution.checkout('S') == 30
+        assert checkout_solution.checkout('S') == 20
         assert checkout_solution.checkout('T') == 20
         assert checkout_solution.checkout('U') == 40
         assert checkout_solution.checkout('V') == 50
         assert checkout_solution.checkout('W') == 20
-        assert checkout_solution.checkout('X') == 90
-        assert checkout_solution.checkout('Y') == 10
-        assert checkout_solution.checkout('Z') == 50
+        assert checkout_solution.checkout('X') == 17
+        assert checkout_solution.checkout('Y') == 20
+        assert checkout_solution.checkout('Z') == 21
 
     def test_checkout_with_multiple_different_items(self):
         assert checkout_solution.checkout('ABC') == 100
@@ -67,9 +67,9 @@ class TestSum:
         assert checkout_solution.checkout('HHHHHHHHHH') == 80
 
     def test_checkout_special_offer_K(self):
-        assert checkout_solution.checkout('KK') == 150
-        assert checkout_solution.checkout('KKK') == 230
-        assert checkout_solution.checkout('KKKK') == 300
+        assert checkout_solution.checkout('KK') == 120
+        assert checkout_solution.checkout('KKK') == 120 + 70
+        assert checkout_solution.checkout('KKKK') == 120 + 120
 
     def test_checkout_special_offer_N(self):
         assert checkout_solution.checkout('NNNM') == 120
@@ -112,3 +112,4 @@ class TestSum:
     def test_checkout_illegal_if_input_contains_non_existing_item(self):
         assert checkout_solution.checkout('ABa') == -1
         assert checkout_solution.checkout('Hello, World!') == -1
+

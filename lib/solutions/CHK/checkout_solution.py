@@ -73,7 +73,7 @@ def checkout(skus):
         'H': 10,
         'I': 35,
         'J': 60,
-        'K': 80,
+        'K': 70,
         'L': 90,
         'M': 15,
         'N': 40,
@@ -81,14 +81,14 @@ def checkout(skus):
         'P': 50,
         'Q': 30,
         'R': 50,
-        'S': 30,
+        'S': 20,
         'T': 20,
         'U': 40,
         'V': 50,
         'W': 20,
-        'X': 90,
-        'Y': 10,
-        'Z': 50,
+        'X': 17,
+        'Y': 20,
+        'Z': 21,
     }
 
     discount_offers = {
@@ -102,7 +102,7 @@ def checkout(skus):
             DiscountOffer(number=10, price=80),
             DiscountOffer(number=5, price=45),
         ],
-        'K': [DiscountOffer(number=2, price=150)],
+        'K': [DiscountOffer(number=2, price=120)],
         'P': [DiscountOffer(number=5, price=200)],
         'Q': [DiscountOffer(number=3, price=80)],
         'U': [DiscountOffer(number=4, price=120)],
@@ -136,3 +136,4 @@ def checkout(skus):
         price += current_price
 
     return price
+
