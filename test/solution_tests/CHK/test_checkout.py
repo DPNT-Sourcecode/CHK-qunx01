@@ -112,6 +112,7 @@ class TestSum:
         assert checkout_solution.checkout('AAAABBBBEE') == 335
         assert checkout_solution.checkout('AAAAABBBBEE') == 355
         assert checkout_solution.checkout('AAAAABBBBEEFFFFFF') == 395
+        assert checkout_solution.checkout('AAAAABBBBEEFFFFFFSSSZZZXX') == 395 + 2 * 45 + 17 * 2
 
     def test_checkout_illegal_if_input_is_not_string(self):
         assert checkout_solution.checkout(1) == -1
@@ -120,4 +121,5 @@ class TestSum:
     def test_checkout_illegal_if_input_contains_non_existing_item(self):
         assert checkout_solution.checkout('ABa') == -1
         assert checkout_solution.checkout('Hello, World!') == -1
+
 
