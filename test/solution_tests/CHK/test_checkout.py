@@ -24,3 +24,13 @@ class TestSum:
         assert checkout_solution.checkout('B B') == 45
         assert checkout_solution.checkout('B B B') == 75
 
+    def test_checkout_multiple_items_with_offers(self):
+        assert checkout_solution.checkout('A A A B B') == 175
+        assert checkout_solution.checkout('A A A A B B B') == 255
+        assert checkout_solution.checkout('A B C D A B C A D A') == 295
+
+    def test_checkout_illegal_if_input_is_not_string(self):
+        assert checkout_solution.checkout(1) == -1
+
+
+

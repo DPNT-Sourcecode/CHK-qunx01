@@ -11,6 +11,9 @@ class SpecialOffer:
 
 
 def checkout(skus):
+    if not isinstance(skus, str):
+        return -1
+
     if not skus:
         return 0
 
@@ -40,5 +43,6 @@ def checkout(skus):
             price += number * prices[sku]
 
     return price
+
 
 
