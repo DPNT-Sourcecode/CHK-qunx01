@@ -87,6 +87,11 @@ class TestSum:
         assert checkout_solution.checkout('RRRQ') == 3 * 50
         assert checkout_solution.checkout('RRQ') == 2 * 50 + 30
 
+    def test_checkout_special_offer_U(self):
+        assert checkout_solution.checkout('UUUU') == 3 * 40
+        assert checkout_solution.checkout('UUUUU') == 4 * 40
+
+
     def test_checkout_multiple_items_with_offers(self):
         assert checkout_solution.checkout('AAABB') == 175
         assert checkout_solution.checkout('AAAABBB') == 255
@@ -102,6 +107,7 @@ class TestSum:
     def test_checkout_illegal_if_input_contains_non_existing_item(self):
         assert checkout_solution.checkout('ABa') == -1
         assert checkout_solution.checkout('Hello, World!') == -1
+
 
 
 
