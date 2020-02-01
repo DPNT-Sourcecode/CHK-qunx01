@@ -136,9 +136,3 @@ def checkout(skus):
         price += current_price
 
     return price
-
-
-
-
-
-
