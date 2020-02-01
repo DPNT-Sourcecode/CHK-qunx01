@@ -26,6 +26,30 @@ class GroupOffer:
     price: int
 
 
+def group_offer_price_calculator(frequencies, prices, group_offers):
+    price = 0
+    frequencies_copy = deepcopy(frequencies)
+
+    for group_offer in group_offers:
+        total_frequency = 0
+        for group_sku in group_offer.members:
+            total_frequency += frequencies_copy[group_sku]
+
+        n_offers = total_frequency // group_offer.number
+        price += n_offers * group_offer.price
+
+        n_to_reduce = n_offers * group_offer.number
+        for sku in sorted(
+            group_offer.members,
+            key=lambda x: prices[x],
+            reverse=True
+        ):
+            current_n_to_reduce = min(frequencies_copy[sku], n_to_reduce)
+            frequencies_copy[sku] -= current_n_to_reduce
+            n_to_reduce -= current_n_to_reduce
+
+    return price, frequencies_copy
+
 def multibuy_offer_price_calculator(frequencies, multibuy_offers):
     frequencies_copy = deepcopy(frequencies)
 
@@ -145,5 +169,3 @@ def checkout(skus):
         price += current_price
 
     return price
-
-
