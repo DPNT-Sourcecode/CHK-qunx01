@@ -18,8 +18,6 @@ class MultibuyOffer:
 
 
 def multibuy_offer_price_calculator(frequencies, multibuy_offers):
-    price = 0
-
     frequencies_copy = deepcopy(frequencies)
 
     for sku, multibuy_offer in multibuy_offers.items():
@@ -27,7 +25,7 @@ def multibuy_offer_price_calculator(frequencies, multibuy_offers):
         n_offers = frequencies[sku] // multibuy_offer.number
         frequencies_copy[multibuy_offer.other_item] = max(0, frequencies[multibuy_offer.other_item] - n_offers)
 
-    return price, frequencies_copy
+    return 0, frequencies_copy
 
 
 def discount_offer_price_calculator(frequencies, discount_offers):
@@ -95,10 +93,10 @@ def checkout(skus):
     current_frequencies = frequencies
     for calculator in calculators:
         current_price, current_frequencies = calculator(current_frequencies)
-        print(current_frequencies)
         price += current_price
 
     return price
+
 
 
 
