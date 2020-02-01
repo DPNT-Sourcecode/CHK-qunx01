@@ -12,4 +12,10 @@ class TestSum:
         assert checkout_solution.checkout('C') == 20
         assert checkout_solution.checkout('D') == 15
 
+    def test_checkout_with_multiple_different_items(self):
+        assert checkout_solution.checkout('A B C') == 100
+        assert checkout_solution.checkout('A B D') == 95
+
+
+
 

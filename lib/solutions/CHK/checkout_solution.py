@@ -3,6 +3,9 @@
 
 
 def checkout(skus):
+    if not skus:
+        return 0
+
     prices = {
         'A': 50,
         'B': 30,
@@ -10,6 +13,14 @@ def checkout(skus):
         'D': 15,
     }
 
-    return prices[skus[0]]
+    skus = skus.split(' ')
+
+    price = 0
+
+    for sku in skus:
+        price += prices[sku]
+
+    return price
+
 
 
