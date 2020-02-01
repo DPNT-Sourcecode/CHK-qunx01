@@ -21,8 +21,13 @@ def checkout(skus):
     price = 0
     for sku, number in frequencies.items():
         if sku == 'A':
-            price += (number // 3 * 130) + (number % 3) * 50
+            special_price = number // 3 * 130
+            price += special_price + (number % 3) * prices[sku]
+        elif sku == 'B':
+            special_price = number // 2 * 45
+            price += special_price + (number % 2) * prices[sku]
         else:
             price += number * prices[sku]
 
     return price
+
