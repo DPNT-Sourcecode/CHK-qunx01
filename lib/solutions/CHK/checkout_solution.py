@@ -106,6 +106,10 @@ def checkout(skus):
         'P': [DiscountOffer(number=5, price=200)],
         'Q': [DiscountOffer(number=3, price=80)],
         'U': [DiscountOffer(number=4, price=120)],
+        'V': [
+            DiscountOffer(number=3, price=130),
+            DiscountOffer(number=2, price=90),
+        ],
     }
 
     multibuy_offers = {
@@ -132,6 +136,7 @@ def checkout(skus):
         price += current_price
 
     return price
+
 
 
 
