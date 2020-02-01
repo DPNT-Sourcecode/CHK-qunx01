@@ -26,8 +26,8 @@ def multibuy_offer_price_calculator(frequencies, multibuy_offers):
 
         min_n_items = 0
         if sku == multibuy_offer.other_item:
-            print(sku, multibuy_offer.other_item)
             min_n_items = multibuy_offer.number
+        print(sku, multibuy_offer.other_item, min_n_items, n_offers)
 
         frequencies_copy[multibuy_offer.other_item] = max(
             min_n_items,
@@ -107,5 +107,6 @@ def checkout(skus):
         price += current_price
 
     return price
+
 
 
