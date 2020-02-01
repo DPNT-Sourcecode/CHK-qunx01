@@ -16,6 +16,9 @@ class TestSum:
         assert checkout_solution.checkout('A B C') == 100
         assert checkout_solution.checkout('A B D') == 95
 
+    def test_checkout_special_offer_A(self):
+        assert checkout_solution.checkout('A A A') == 130
+
 
 
 

@@ -1,5 +1,6 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
+from collections import Counter
 
 
 def checkout(skus):
@@ -15,12 +16,14 @@ def checkout(skus):
 
     skus = skus.split(' ')
 
-    price = 0
+    frequencies = Counter(skus)
 
-    for sku in skus:
-        price += prices[sku]
+    price = 0
+    for sku, number in frequencies.items():
+        price += number * price[sku]
 
     return price
+
 
 
 
