@@ -31,6 +31,12 @@ class TestSum:
 
     def test_checkout_illegal_if_input_is_not_string(self):
         assert checkout_solution.checkout(1) == -1
+        assert checkout_solution.checkout([1.2, 1.5]) == -1
+
+    def test_checkout_illegal_if_input_contains_non_existing_item(self):
+        assert checkout_solution.checkout('A B F') == -1
+        assert checkout_solution.checkout('Hello, World!') == -1
+
 
 
 

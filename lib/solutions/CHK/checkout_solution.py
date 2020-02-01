@@ -32,6 +32,8 @@ def checkout(skus):
     skus = skus.split(' ')
 
     frequencies = Counter(skus)
+    if any([sku not in prices.keys() for sku in frequencies.keys()]):
+        return -1
 
     price = 0
     for sku, number in frequencies.items():
@@ -43,6 +45,7 @@ def checkout(skus):
             price += number * prices[sku]
 
     return price
+
 
 
 
