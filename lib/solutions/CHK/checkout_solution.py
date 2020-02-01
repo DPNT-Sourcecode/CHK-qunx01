@@ -1,5 +1,7 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
+from typing import List
+
 from dataclasses import dataclass
 from collections import Counter
 from copy import deepcopy
@@ -15,6 +17,13 @@ class DiscountOffer:
 class MultibuyOffer:
     number: int
     other_item: str
+
+
+@dataclass
+class GroupOffer:
+    number: int
+    members: List[str]
+    price: int
 
 
 def multibuy_offer_price_calculator(frequencies, multibuy_offers):
@@ -136,4 +145,5 @@ def checkout(skus):
         price += current_price
 
     return price
+
 
