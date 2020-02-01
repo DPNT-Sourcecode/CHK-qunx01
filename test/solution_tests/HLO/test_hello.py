@@ -5,4 +5,3 @@ class TestSum:
 
     def test_hello(self):
         assert hello_solution.hello('') == 'Hello world'
-
