@@ -10,6 +10,13 @@ class SpecialOffer:
     price: int
 
 
+def default_price_calculator(frequencies, prices):
+    price = 0
+    for sku, number in frequencies.items():
+
+    return price, Counter()
+
+
 def checkout(skus):
     if not isinstance(skus, str):
         return -1
@@ -47,5 +54,6 @@ def checkout(skus):
             price += number * prices[sku]
 
     return price
+
 
 
