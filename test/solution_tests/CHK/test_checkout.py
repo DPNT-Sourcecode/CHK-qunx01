@@ -37,7 +37,3 @@ class TestSum:
         assert checkout_solution.checkout('ABF') == -1
         assert checkout_solution.checkout('Hello, World!') == -1
 
-
-
-
-

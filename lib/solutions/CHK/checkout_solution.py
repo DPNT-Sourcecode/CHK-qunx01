@@ -43,8 +43,3 @@ def checkout(skus):
             price += number * prices[sku]
 
     return price
-
-
-
-
-
