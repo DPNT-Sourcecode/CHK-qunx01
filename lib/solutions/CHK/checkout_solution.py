@@ -15,6 +15,7 @@ class DiscountOffer:
 class MultibuyOffer:
     number: int
     other_item: str
+    minimum: int = 0
 
 
 def multibuy_offer_price_calculator(frequencies, multibuy_offers):
@@ -22,15 +23,14 @@ def multibuy_offer_price_calculator(frequencies, multibuy_offers):
 
     for sku, multibuy_offer in multibuy_offers.items():
         multibuy_offer = multibuy_offers[sku]
-        n_offers = frequencies_copy[sku] // multibuy_offer.number
 
-        min_n_items = 0
-        if sku == multibuy_offer.other_item:
-            min_n_items = multibuy_offer.number
-        print(sku, multibuy_offer.other_item, min_n_items, n_offers)
+        if frequencies_copy[sku] >= multibuy_offer.minimum:
+            n_offers = frequencies_copy[sku] // multibuy_offer.number
+        else:
+            n_offers = 0
 
         frequencies_copy[multibuy_offer.other_item] = max(
-            min_n_items,
+            0,
             frequencies_copy[multibuy_offer.other_item] - n_offers
         )
 
@@ -86,7 +86,7 @@ def checkout(skus):
 
     multibuy_offers = {
         'E': MultibuyOffer(number=2, other_item='B'),
-        'F': MultibuyOffer(number=2, other_item='F')
+        'F': MultibuyOffer(number=2, other_item='F', minimum=3),
     }
 
     frequencies = Counter(skus)
@@ -107,6 +107,7 @@ def checkout(skus):
         price += current_price
 
     return price
+
 
 
 
