@@ -13,29 +13,30 @@ class TestSum:
         assert checkout_solution.checkout('D') == 15
 
     def test_checkout_with_multiple_different_items(self):
-        assert checkout_solution.checkout('A B C') == 100
-        assert checkout_solution.checkout('A B D') == 95
+        assert checkout_solution.checkout('ABC') == 100
+        assert checkout_solution.checkout('ABD') == 95
 
     def test_checkout_special_offer_A(self):
-        assert checkout_solution.checkout('A A A') == 130
-        assert checkout_solution.checkout('A A A A') == 180
+        assert checkout_solution.checkout('AAA') == 130
+        assert checkout_solution.checkout('AAAA') == 180
 
     def test_checkout_special_offer_B(self):
-        assert checkout_solution.checkout('B B') == 45
-        assert checkout_solution.checkout('B B B') == 75
+        assert checkout_solution.checkout('BB') == 45
+        assert checkout_solution.checkout('BBB') == 75
 
     def test_checkout_multiple_items_with_offers(self):
-        assert checkout_solution.checkout('A A A B B') == 175
-        assert checkout_solution.checkout('A A A A B B B') == 255
-        assert checkout_solution.checkout('A B C D A B C A D A') == 295
+        assert checkout_solution.checkout('AAABB') == 175
+        assert checkout_solution.checkout('AAAABBB') == 255
+        assert checkout_solution.checkout('ABCDABCADA') == 295
 
     def test_checkout_illegal_if_input_is_not_string(self):
         assert checkout_solution.checkout(1) == -1
         assert checkout_solution.checkout([1.2, 1.5]) == -1
 
     def test_checkout_illegal_if_input_contains_non_existing_item(self):
-        assert checkout_solution.checkout('A B F') == -1
+        assert checkout_solution.checkout('ABF') == -1
         assert checkout_solution.checkout('Hello, World!') == -1
+
 
 
 

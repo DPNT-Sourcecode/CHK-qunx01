@@ -29,8 +29,6 @@ def checkout(skus):
         'B': SpecialOffer(number=2, price=45),
     }
 
-    skus = skus.split(' ')
-
     frequencies = Counter(skus)
     if any([sku not in prices.keys() for sku in frequencies.keys()]):
         return -1
@@ -45,6 +43,7 @@ def checkout(skus):
             price += number * prices[sku]
 
     return price
+
 
 
 
