@@ -34,6 +34,9 @@ def checkout(skus):
     if any([sku not in prices.keys() for sku in frequencies.keys()]):
         return -1
 
+    if 'E' and 'B' in frequencies:
+        frequencies['B'] = max(0, frequencies['B'] - frequencies['E'] // 2)
+
     price = 0
     for sku, number in frequencies.items():
         if sku in special_offers:
@@ -44,4 +47,5 @@ def checkout(skus):
             price += number * prices[sku]
 
     return price
+
 

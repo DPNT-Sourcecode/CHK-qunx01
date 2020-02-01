@@ -41,5 +41,9 @@ class TestSum:
 
     def test_checkout_special_offer_E(self):
         assert checkout_solution.checkout('EEB') == 80
+        assert checkout_solution.checkout('BEE') == 80
+        assert checkout_solution.checkout('EEBEE') == 160
+        assert checkout_solution.checkout('EEBEBE') == 160
+
 
 
