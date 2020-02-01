@@ -64,6 +64,7 @@ def checkout(skus):
         'C': 20,
         'D': 15,
         'E': 40,
+        'F': 10,
     }
 
     discount_offers = {
@@ -75,7 +76,8 @@ def checkout(skus):
     }
 
     multibuy_offers = {
-        'E': MultibuyOffer(number=2, other_item='B')
+        'E': MultibuyOffer(number=2, other_item='B'),
+        'F': MultibuyOffer(number=2, other_item='F')
     }
 
     frequencies = Counter(skus)
@@ -96,10 +98,3 @@ def checkout(skus):
         price += current_price
 
     return price
-
-
-
-
-
-
-
