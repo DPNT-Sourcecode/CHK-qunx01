@@ -50,6 +50,7 @@ def group_offer_price_calculator(frequencies, prices, group_offers):
 
     return price, frequencies_copy
 
+
 def multibuy_offer_price_calculator(frequencies, multibuy_offers):
     frequencies_copy = deepcopy(frequencies)
 
@@ -151,12 +152,17 @@ def checkout(skus):
         'R': MultibuyOffer(number=3, other_item='Q'),
     }
 
+    group_offers = [
+        GroupOffer(number=3, members=['S', 'T', 'X', 'Y', 'Z'], price=45),
+    ]
+
     frequencies = Counter(skus)
 
     if any([sku not in prices.keys() for sku in frequencies.keys()]):
         return -1
 
     calculators = [
+        lambda freqs: group_offer_price_calculator(freqs, prices, group_offers),
         lambda freqs: multibuy_offer_price_calculator(freqs, multibuy_offers),
         lambda freqs: discount_offer_price_calculator(freqs, discount_offers),
         lambda freqs: default_price_calculator(freqs, prices),
@@ -169,3 +175,4 @@ def checkout(skus):
         price += current_price
 
     return price
+
