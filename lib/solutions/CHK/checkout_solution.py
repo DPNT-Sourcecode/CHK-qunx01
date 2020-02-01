@@ -3,5 +3,13 @@
 
 
 def checkout(skus):
-    return 0
+    prices = {
+        'A': 50,
+        'B': 30,
+        'C': 20,
+        'D': 15,
+    }
+
+    return prices[skus[0]]
+
 

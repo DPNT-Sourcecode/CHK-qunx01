@@ -7,5 +7,9 @@ class TestSum:
         assert checkout_solution.checkout('') == 0
 
     def test_checkout_with_one_item(self):
-        assert
+        assert checkout_solution.checkout('A') == 50
+        assert checkout_solution.checkout('B') == 30
+        assert checkout_solution.checkout('C') == 20
+        assert checkout_solution.checkout('D') == 15
+
 
