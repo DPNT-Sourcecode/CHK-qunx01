@@ -44,6 +44,3 @@ class TestSum:
         assert checkout_solution.checkout('BEE') == 80
         assert checkout_solution.checkout('EEBEE') == 160
         assert checkout_solution.checkout('EEBEBE') == 160
-
-
-
