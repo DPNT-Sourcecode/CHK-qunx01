@@ -10,10 +10,30 @@ class SpecialOffer:
     price: int
 
 
+def discount_offer_price_calculator(frequencies, special_offers):
+    price = 0
+
+    frequencies_copy = Counter()
+
+    for sku, number in frequencies.items():
+        if sku in special_offers:
+            special_offer = special_offers[sku]
+            n_offers = number // special_offer.number
+            leftovers = number % special_offer.number
+
+            price += n_offers * special_offer.price
+            frequencies_copy[sku] = leftovers
+
+        else:
+            frequencies_copy[sku] = number
+
+    return price, frequencies_copy
+
+
 def default_price_calculator(frequencies, prices):
     price = 0
     for sku, number in frequencies.items():
-
+        price += number * prices[sku]
     return price, Counter()
 
 
@@ -45,15 +65,15 @@ def checkout(skus):
         frequencies['B'] = max(0, frequencies['B'] - frequencies['E'] // 2)
 
     price = 0
-    for sku, number in frequencies.items():
-        if sku in special_offers:
-            special_offer = special_offers[sku]
-            price += number // special_offer.number * special_offer.price
-            price += number % special_offer.number * prices[sku]
-        else:
-            price += number * prices[sku]
+
+    current_price, frequencies = discount_offer_price_calculator(frequencies, special_offers)
+    price += current_price
+
+    current_price, frequencies = default_price_calculator(frequencies, prices)
+    price += current_price
 
     return price
+
 
 
 
