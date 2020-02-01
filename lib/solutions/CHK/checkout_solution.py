@@ -2,6 +2,7 @@
 # skus = unicode string
 from dataclasses import dataclass
 from collections import Counter
+from copy import deepcopy
 
 
 @dataclass
@@ -10,6 +11,7 @@ class DiscountOffer:
     price: int
 
 
+@dataclass
 class MultibuyOffer:
     number: int
     other_item: str
@@ -18,13 +20,14 @@ class MultibuyOffer:
 def multibuy_offer_price_calculator(frequencies, multibuy_offers):
     price = 0
 
+    frequencies_copy = deepcopy(frequencies)
+
     for sku, multibuy_offer in multibuy_offers.items():
         multibuy_offer = multibuy_offers[sku]
         n_offers = frequencies[sku] // multibuy_offer.number
-        frequencies[]
-        frequencies[multibuy_offer.other_item] = max(0, frequencies[multibuy_offer.other_item] - n_offers)
+        frequencies_copy[multibuy_offer.other_item] = max(0, frequencies[multibuy_offer.other_item] - n_offers)
 
-    return price
+    return price, frequencies_copy
 
 
 def discount_offer_price_calculator(frequencies, discount_offers):
@@ -73,14 +76,19 @@ def checkout(skus):
         'B': DiscountOffer(number=2, price=45),
     }
 
+    multibuy_offers = {
+        'E': MultibuyOffer(number=2, other_item='B')
+    }
+
     frequencies = Counter(skus)
+
     if any([sku not in prices.keys() for sku in frequencies.keys()]):
         return -1
 
-    if 'E' and 'B' in frequencies:
-        frequencies['B'] = max(0, frequencies['B'] - frequencies['E'] // 2)
-
     price = 0
+
+    current_price, frequencies = multibuy_offer_price_calculator(frequencies, multibuy_offers)
+    price += current_price
 
     current_price, frequencies = discount_offer_price_calculator(frequencies, discount_offers)
     price += current_price
@@ -89,4 +97,5 @@ def checkout(skus):
     price += current_price
 
     return price
+
 
